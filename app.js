@@ -17,7 +17,15 @@ app.get('/', (request, response) =>{
     
 });
 
+app.get('/api/signup', (request, response)=>{
+    response.send("<h1>Welcome to signup page </h1>")
 
+})
+
+app.get('/api/login', (request, response)=>{
+    response.send("<h1>Welcome to login page </h1>")
+
+})
 app.post('/api/signup', (request, response)=>{
     const usersobj = request.body;
     
@@ -33,11 +41,15 @@ app.post('/api/signup', (request, response)=>{
                 if (user.name === usersobj.name){
                     results.success = false
                     results.usernameExists = true
+                    console.log(`The user ${user.name} already exests`)
                 }
                 if(user.email === usersobj.email){
                     results.success = false
                     results.emailExists = true
+                    console.log(`The email ${user.email} already exests`)
+
                 }
+
             })
         }
     else{
